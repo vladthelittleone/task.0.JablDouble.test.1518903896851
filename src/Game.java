@@ -60,10 +60,26 @@ public class Game {
                 //function will return a number
 
                 if (life > 3 || life < 2) {
-                    galaxy.get(i).setLive(false);
+                    if(galaxy.get(i).isLive()) {
+                        galaxy.get(i).setLive(false);
+                        Field.clearScreen();
+                        Field.drawTable((ArrayList<Point>) galaxy, height, wight);
+                        try {
+                            Thread.sleep(2000);//create a sleep so that the screen is updated every 2 seconds
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
                 if (life == 2 || life == 3) {
                     galaxy.get(i).setLive(true);
+                    Field.clearScreen();
+                    Field.drawTable((ArrayList<Point>) galaxy, height, wight);
+                    try {
+                        Thread.sleep(2000);//create a sleep so that the screen is updated every 2 seconds
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             Field.clearScreen();
